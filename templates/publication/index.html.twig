@@ -1,39 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Publication index{% endblock %}
+
+{% block title %}Publications{% endblock %}
 
 {% block body %}
-    <h1>Publication index</h1>
+<div class="publications-wrapper">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Resume</th>
-                <th>Numero</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="publications-header">
+        <h1 class="publications-title">Publications</h1>
+        <a href="{{ path('app_publication_new') }}" class="btn btn-primary">+ Nouvelle publication</a>
+    </div>
+
+    <div class="publications-grid">
+
         {% for publication in publications %}
-            <tr>
-                <td>{{ publication.id }}</td>
-                <td>{{ publication.title }}</td>
-                <td>{{ publication.resume }}</td>
-                <td>{{ publication.numero }}</td>
-                <td>
-                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
-                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <article class="pub-card">
 
-    <a href="{{ path('app_publication_new') }}">Create new</a>
+            <div class="pub-card__cover">
+                {% if publication.coverUrl %}
+                    <img src="{{ publication.coverUrl }}" alt="{{ publication.title }}">
+                {% endif %}
+            </div>
+
+            <div class="pub-card__footer">
+                <div class="pub-card__info">
+                    <span class="pub-card__title">{{ publication.title }}</span>
+                    <span class="pub-card__resume">{{ publication.resume }}</span>
+                </div>
+                <div class="pub-card__actions">
+                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}" class="btn btn-show">
+                        Voir
+                    </a>
+                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}" class="btn btn-edit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+        {% else %}
+        <div class="publications-empty">
+            <p>Aucune publication trouvée.</p>
+            <a href="{{ path('app_publication_new') }}" class="btn btn-primary">Créer la première</a>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
 {% endblock %}

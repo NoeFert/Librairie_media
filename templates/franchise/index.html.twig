@@ -3,37 +3,40 @@
 {% block title %}Franchise index{% endblock %}
 
 {% block body %}
-    <h1>Franchise index</h1>
+    <div class="publications-wrapper">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Cover_url</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for franchise in franchises %}
-            <tr>
-                <td>{{ franchise.id }}</td>
-                <td>{{ franchise.name }}</td>
-                <td>{{ franchise.description }}</td>
-                <td>{{ franchise.coverUrl }}</td>
-                <td>
-                    <a href="{{ path('app_franchise_show', {'id': franchise.id}) }}">show</a>
-                    <a href="{{ path('app_franchise_edit', {'id': franchise.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="publications-header">
+            <h1 class="publications-title">Franchises</h1>
+            <a href="{{ path('app_franchise_new') }}" class="btn btn-primary">+ Nouvelle franchise</a>
+        </div>
 
-    <a href="{{ path('app_franchise_new') }}">Create new</a>
+        <div class="publications-grid">
+            {% for franchise in franchises %}
+                <article class="pub-card">
+
+                    <div class="pub-card__cover">
+                        {% if franchise.coverUrl %}
+                            <img src="{{ franchise.coverUrl }}" alt="{{ franchise.name }}">
+                        {% endif %}
+                    </div>
+
+                    <div class="pub-card__footer">
+                        <div class="pub-card__info">
+                            <span class="pub-card__title">{{ franchise.name }}</span>
+                            <span class="pub-card__resume">{{ franchise.description }}</span>
+                        </div>
+                        <div class="pub-card__actions">
+                            <a href="{{ path('app_franchise_show', {'id': franchise.id}) }}" class="btn btn-show">
+                                Voir
+                            </a>
+                            <a href="{{ path('app_franchise_edit', {'id': franchise.id}) }}" class="btn btn-edit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </article>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
