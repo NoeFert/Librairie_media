@@ -27,6 +27,9 @@ class Auteur
     #[ORM\ManyToMany(targetEntity: Publication::class, mappedBy: 'auteur')]
     private Collection $publications;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $portait_url = null;
+
     public function __construct()
     {
         $this->publications = new ArrayCollection();
@@ -84,6 +87,18 @@ class Auteur
         if ($this->publications->removeElement($publication)) {
             $publication->removeAuteur($this);
         }
+
+        return $this;
+    }
+
+    public function getPortaitUrl(): ?string
+    {
+        return $this->portait_url;
+    }
+
+    public function setPortaitUrl(?string $portait_url): static
+    {
+        $this->portait_url = $portait_url;
 
         return $this;
     }
