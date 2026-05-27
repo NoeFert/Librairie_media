@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/publication')]
 final class PublicationController extends AbstractController
 {
-    #[Route(name: 'app_publication_index', methods: ['GET'])]
+    #[Route( name: 'app_publication_index', methods: ['GET'])]
     public function index(PublicationRepository $publicationRepository): Response
     {
         return $this->render('publication/index.html.twig', [

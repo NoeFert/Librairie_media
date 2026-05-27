@@ -19,6 +19,15 @@
         {% endif %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <p>nom du site</p>
+            <ul>
+                <li><a href="{{ path('app_publication_index')}}">Publication</a></li>
+                <li><a href="{{ path('app_franchise_index')}}">Franchise</a></li>
+                <li><a href="{{ path('app_auteur_index')}}">Auteur</a></li>
+            </ul>
+        </header>
+        {% block body %}
+        {% endblock %}
     </body>
 </html>
