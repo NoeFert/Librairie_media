@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Franchise;
 use App\Form\FranchiseType;
 use App\Repository\FranchiseRepository;
+use App\Repository\PublicationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,10 +44,12 @@ final class FranchiseController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_franchise_show', methods: ['GET'])]
-    public function show(Franchise $franchise): Response
+    public function show(Franchise $franchise, PublicationRepository $publicationRepository): Response
     {
+        $publications = $publicationRepository->findByFranchiseField($franchise->getId());
         return $this->render('franchise/show.html.twig', [
             'franchise' => $franchise,
+            'publications' => $publications,
         ]);
     }
 

@@ -19,7 +19,7 @@ class FranchiseType extends AbstractType
             ->add('cover_url')
             ->add('genre', EntityType::class, [
                 'class' => Genre::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }

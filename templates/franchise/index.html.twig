@@ -18,6 +18,7 @@
                         {% if franchise.coverUrl %}
                             <img src="{{ franchise.coverUrl }}" alt="{{ franchise.name }}">
                         {% endif %}
+                        <div class="pub-card__numero">{{ franchise.genre.name }}</div>
                     </div>
 
                     <div class="pub-card__footer">
