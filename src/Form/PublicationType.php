@@ -19,6 +19,7 @@ class PublicationType extends AbstractType
             ->add('title')
             ->add('resume')
             ->add('numero')
+            ->add('cover_url')
             ->add('media', EntityType::class, [
                 'class' => Media::class,
                 'choice_label' => 'id',

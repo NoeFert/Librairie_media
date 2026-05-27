@@ -39,6 +39,9 @@ class Publication
     #[ORM\ManyToMany(targetEntity: Auteur::class, inversedBy: 'publications')]
     private Collection $auteur;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cover_url = null;
+
     public function __construct()
     {
         $this->auteur = new ArrayCollection();
@@ -129,6 +132,18 @@ class Publication
     public function removeAuteur(Auteur $auteur): static
     {
         $this->auteur->removeElement($auteur);
+
+        return $this;
+    }
+
+    public function getCoverUrl(): ?string
+    {
+        return $this->cover_url;
+    }
+
+    public function setCoverUrl(?string $cover_url): static
+    {
+        $this->cover_url = $cover_url;
 
         return $this;
     }
