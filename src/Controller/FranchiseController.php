@@ -6,6 +6,7 @@ use App\Entity\Franchise;
 use App\Form\FranchiseType;
 use App\Repository\FranchiseRepository;
 use App\Repository\PublicationRepository;
+use App\Form\FilterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,11 +16,22 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/franchise')]
 final class FranchiseController extends AbstractController
 {
-    #[Route(name: 'app_franchise_index', methods: ['GET'])]
-    public function index(FranchiseRepository $franchiseRepository): Response
+    #[Route(name: 'app_franchise_index', methods: ['GET', 'POST'])]
+    public function index(Request $request, FranchiseRepository $franchiseRepository): Response
     {
+        $form = $this->createForm(FilterType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $genre = $form->get('searchedGenre')->getData(); // searchedGenre est le champ du formulaire
+            $franchises = $franchiseRepository->findByGenre($genre);
+        } else {
+            $franchises = $franchiseRepository->findAll();
+        }
+
         return $this->render('franchise/index.html.twig', [
-            'franchises' => $franchiseRepository->findAll(),
+            'franchises' => $franchises,
+            'filterForm' => $form,
         ]);
     }
 

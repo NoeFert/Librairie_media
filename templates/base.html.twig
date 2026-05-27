@@ -27,7 +27,9 @@
                 <li><a href="{{ path('app_auteur_index')}}">Auteur</a></li>
             </ul>
         </header>
+        <turbo-frame id="page_index">
         {% block body %}
         {% endblock %}
+        </turbo-frame>
     </body>
 </html>

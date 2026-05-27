@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="publications-wrapper">
+        {{ include('franchise/_form.html.twig', {'button_label': 'Filter', 'form':filterForm})}}
 
         <div class="publications-header">
             <h1 class="publications-title">Franchises</h1>
