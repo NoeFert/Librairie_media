@@ -14,7 +14,7 @@ class AuteurType extends AbstractType
         $builder
             ->add('name')
             ->add('role')
-            ->add('portrait_url')
+            ->add('portait_url')
         ;
     }
 
