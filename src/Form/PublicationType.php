@@ -22,15 +22,15 @@ class PublicationType extends AbstractType
             ->add('cover_url')
             ->add('media', EntityType::class, [
                 'class' => Media::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('franchise', EntityType::class, [
                 'class' => Franchise::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('auteur', EntityType::class, [
                 'class' => Auteur::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'multiple' => true,
             ])
         ;

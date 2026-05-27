@@ -20,6 +20,7 @@
                 {% if publication.coverUrl %}
                     <img src="{{ publication.coverUrl }}" alt="{{ publication.title }}">
                 {% endif %}
+                <div class="pub-card__numero">{{ publication.media.name }}</div>
             </div>
 
             <div class="pub-card__footer">

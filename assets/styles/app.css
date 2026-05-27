@@ -109,6 +109,21 @@ body {
     display: block;
 }
 
+/* ── Numéro badge (coin haut droit) ──────────────────────── */
+.pub-card__numero {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.92);
+    color: var(--color-text);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
 /* ── Footer flottant ─────────────────────────────────────── */
 .pub-card__footer {
     position: absolute;
