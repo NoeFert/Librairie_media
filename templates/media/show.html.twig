@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Media{% endblock %}
+{% block title %}{{ medium.name }}{% endblock %}
 
 {% block body %}
-    <h1>Media</h1>
+<div class="detail-wrapper">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ medium.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ medium.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <a href="{{ path('app_media_index') }}" class="detail-back">Retour aux médias</a>
 
-    <a href="{{ path('app_media_index') }}">back to list</a>
+    <div class="detail-card">
+        <div class="detail-card__body">
+            <div class="detail-card__header">
+                <div>
+                    <div class="detail-card__avatar">{{ medium.name|first|upper }}</div>
+                    <h1 class="detail-card__title">{{ medium.name }}</h1>
+                </div>
+            </div>
 
-    <a href="{{ path('app_media_edit', {'id': medium.id}) }}">edit</a>
+            <div class="detail-card__actions">
+                <a href="{{ path('app_media_edit', {'id': medium.id}) }}" class="btn btn-secondary">Modifier</a>
+                {{ include('media/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 
-    {{ include('media/_delete_form.html.twig') }}
+</div>
 {% endblock %}

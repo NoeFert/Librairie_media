@@ -1,35 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre index{% endblock %}
+{% block title %}Genres{% endblock %}
 
 {% block body %}
-    <h1>Genre index</h1>
+<div class="publications-wrapper">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for genre in genres %}
-            <tr>
-                <td>{{ genre.id }}</td>
-                <td>{{ genre.name }}</td>
-                <td>
-                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
-                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="publications-header">
+        <h1 class="publications-title">Genres</h1>
+        <a href="{{ path('app_genre_new') }}" class="btn btn-primary">+ Nouveau genre</a>
+    </div>
 
-    <a href="{{ path('app_genre_new') }}">Create new</a>
+    {% if genres is empty %}
+        <div class="publications-empty">
+            <p>Aucun genre enregistré.</p>
+            <a href="{{ path('app_genre_new') }}" class="btn btn-primary">Créer le premier</a>
+        </div>
+    {% else %}
+        <div class="auteur-list">
+            {% for genre in genres %}
+                <div class="auteur-row">
+                    <div class="auteur-avatar">{{ genre.name|first|upper }}</div>
+                    <div class="auteur-info">
+                        <span class="auteur-name">{{ genre.name }}</span>
+                    </div>
+                    <div class="auteur-actions">
+                        <a href="{{ path('app_genre_show', {'id': genre.id}) }}" class="btn btn-secondary btn-sm">Voir</a>
+                        <a href="{{ path('app_genre_edit', {'id': genre.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
 {% endblock %}

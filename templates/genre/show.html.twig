@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre{% endblock %}
+{% block title %}{{ genre.name }}{% endblock %}
 
 {% block body %}
-    <h1>Genre</h1>
+<div class="detail-wrapper">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ genre.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ genre.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <a href="{{ path('app_genre_index') }}" class="detail-back">Retour aux genres</a>
 
-    <a href="{{ path('app_genre_index') }}">back to list</a>
+    <div class="detail-card">
+        <div class="detail-card__body">
+            <div class="detail-card__header">
+                <div>
+                    <div class="detail-card__avatar">{{ genre.name|first|upper }}</div>
+                    <h1 class="detail-card__title">{{ genre.name }}</h1>
+                </div>
+            </div>
 
-    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
+            <div class="detail-card__actions">
+                <a href="{{ path('app_genre_edit', {'id': genre.id}) }}" class="btn btn-secondary">Modifier</a>
+                {{ include('genre/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 
-    {{ include('genre/_delete_form.html.twig') }}
+</div>
 {% endblock %}

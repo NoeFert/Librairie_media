@@ -1,35 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Media index{% endblock %}
+{% block title %}Médias{% endblock %}
 
 {% block body %}
-    <h1>Media index</h1>
+<div class="publications-wrapper">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for medium in media %}
-            <tr>
-                <td>{{ medium.id }}</td>
-                <td>{{ medium.name }}</td>
-                <td>
-                    <a href="{{ path('app_media_show', {'id': medium.id}) }}">show</a>
-                    <a href="{{ path('app_media_edit', {'id': medium.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="publications-header">
+        <h1 class="publications-title">Médias</h1>
+        <a href="{{ path('app_media_new') }}" class="btn btn-primary">+ Nouveau média</a>
+    </div>
 
-    <a href="{{ path('app_media_new') }}">Create new</a>
+    {% if media is empty %}
+        <div class="publications-empty">
+            <p>Aucun média enregistré.</p>
+            <a href="{{ path('app_media_new') }}" class="btn btn-primary">Créer le premier</a>
+        </div>
+    {% else %}
+        <div class="auteur-list">
+            {% for medium in media %}
+                <div class="auteur-row">
+                    <div class="auteur-avatar">{{ medium.name|first|upper }}</div>
+                    <div class="auteur-info">
+                        <span class="auteur-name">{{ medium.name }}</span>
+                    </div>
+                    <div class="auteur-actions">
+                        <a href="{{ path('app_media_show', {'id': medium.id}) }}" class="btn btn-secondary btn-sm">Voir</a>
+                        <a href="{{ path('app_media_edit', {'id': medium.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
 {% endblock %}
