@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Franchise{% endblock %}
+{% block title %}Nouvelle franchise{% endblock %}
 
 {% block body %}
-    <h1>Create new Franchise</h1>
-
-    {{ include('franchise/_form.html.twig') }}
-
-    <a href="{{ path('app_franchise_index') }}">back to list</a>
+<div class="form-wrapper">
+    <a href="{{ path('app_franchise_index') }}" class="detail-back">Retour aux franchises</a>
+    <div class="form-card">
+        <h1 class="form-card__title">Créer une franchise</h1>
+        {{ include('franchise/_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

@@ -1,37 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Auteur index{% endblock %}
+{% block title %}Auteurs{% endblock %}
 
 {% block body %}
-    <h1>Auteur index</h1>
+<div class="publications-wrapper">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for auteur in auteurs %}
-            <tr>
-                <td>{{ auteur.id }}</td>
-                <td>{{ auteur.name }}</td>
-                <td>{{ auteur.role }}</td>
-                <td>
-                    <a href="{{ path('app_auteur_show', {'id': auteur.id}) }}">show</a>
-                    <a href="{{ path('app_auteur_edit', {'id': auteur.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="publications-header">
+        <h1 class="publications-title">Auteurs</h1>
+        <a href="{{ path('app_auteur_new') }}" class="btn btn-primary">+ Nouvel auteur</a>
+    </div>
 
-    <a href="{{ path('app_auteur_new') }}">Create new</a>
+    {% if auteurs is empty %}
+        <div class="publications-empty">
+            <p>Aucun auteur enregistré.</p>
+            <a href="{{ path('app_auteur_new') }}" class="btn btn-primary">Créer le premier</a>
+        </div>
+    {% else %}
+        <div class="auteur-list">
+            {% for auteur in auteurs %}
+                <div class="auteur-row">
+                    <div class="auteur-avatar">{{ auteur.name|first|upper }}</div>
+                    <div class="auteur-info">
+                        <span class="auteur-name">{{ auteur.name }}</span>
+                        {% if auteur.role %}
+                            <span class="auteur-role">{{ auteur.role }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="auteur-actions">
+                        <a href="{{ path('app_auteur_show', {'id': auteur.id}) }}" class="btn btn-secondary btn-sm">Voir</a>
+                        <a href="{{ path('app_auteur_edit', {'id': auteur.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
 {% endblock %}

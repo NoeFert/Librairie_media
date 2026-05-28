@@ -14,6 +14,9 @@
             {% else %}
                 <div class="detail-card__cover-placeholder">Aucune image</div>
             {% endif %}
+            {% if publication.numero %}
+                <span class="detail-card__numero">N° {{ publication.numero }}</span>
+            {% endif %}
         </div>
 
         <div class="detail-card__body">
@@ -28,16 +31,7 @@
                 <p class="detail-card__description">{{ publication.resume }}</p>
             {% endif %}
 
-            {% if publication.numero %}
-            <div class="detail-card__meta">
-                <div class="detail-card__meta-row">
-                    <span class="detail-card__meta-label">Numéro</span>
-                    <span class="detail-card__meta-value">{{ publication.numero }}</span>
-                </div>
-            </div>
-            {% endif %}
-
-            <div class="detail-card__actions">
+<div class="detail-card__actions">
                 <a href="{{ path('app_publication_edit', {'id': publication.id}) }}" class="btn btn-secondary">Modifier</a>
                 {{ include('publication/_delete_form.html.twig') }}
             </div>

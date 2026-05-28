@@ -1,0 +1,93 @@
+/* ── Wrapper de page formulaire ──────────────────────────── */
+.form-wrapper {
+    padding: 32px 48px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* ── Carte formulaire ────────────────────────────────────── */
+.form-card {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--color-border);
+}
+
+.form-card__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: 28px;
+}
+
+/* ── Champs ──────────────────────────────────────────────── */
+.form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-card form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-card form label {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.form-card form input[type="text"],
+.form-card form input[type="email"],
+.form-card form input[type="password"],
+.form-card form input[type="number"],
+.form-card form input[type="url"],
+.form-card form select,
+.form-card form textarea {
+    display: block;
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-card form input:focus,
+.form-card form select:focus,
+.form-card form textarea:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(74, 105, 141, 0.12);
+    background: var(--color-white);
+}
+
+.form-card form textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-card form .btn,
+.form-card form button[type="submit"],
+.form-card form button:not([type]),
+.form-card > .btn {
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+/* ── Pied de carte (zone suppression) ────────────────────── */
+.form-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}

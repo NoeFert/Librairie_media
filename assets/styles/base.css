@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Variables ───────────────────────────────────────────── */
+:root {
+    --radius:        15px;
+    --radius-inner:  10px;
+    --color-bg:      #ebebed;
+    --color-white:   #ffffff;
+    --color-dark:    #1c1c1e;
+    --color-text:    #1a1a1a;
+    --color-muted:   #8e8e93;
+    --color-border:  rgba(0, 0, 0, 0.08);
+    --color-accent:  rgb(74, 105, 141);
+    --font-main:     'DM Sans', sans-serif;
+    --card-width:    260px;
+    --card-height:   360px;
+    --header-h:      64px;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    min-height: 100vh;
+    color: var(--color-text);
+}
+
+a {
+    text-decoration: none;
+}

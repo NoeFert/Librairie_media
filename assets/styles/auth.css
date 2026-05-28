@@ -1,0 +1,119 @@
+/* ── Pages connexion / inscription ───────────────────────── */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-h));
+    padding: 32px;
+}
+
+.auth-card {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10), 0 0 0 1px var(--color-border);
+}
+
+.auth-card h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+    color: var(--color-text);
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-card label {
+    display: block;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 6px;
+}
+
+/* ── Champs ──────────────────────────────────────────────── */
+.form-control,
+.auth-card input[type="email"],
+.auth-card input[type="password"],
+.auth-card input[type="text"] {
+    display: block;
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus,
+.auth-card input[type="email"]:focus,
+.auth-card input[type="password"]:focus,
+.auth-card input[type="text"]:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(74, 105, 141, 0.12);
+    background: var(--color-white);
+}
+
+/* ── Bouton de soumission ────────────────────────────────── */
+.auth-card .btn,
+.auth-card button[type="submit"] {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 12px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+    background: var(--color-dark);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.20);
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-card .btn:hover,
+.auth-card button[type="submit"]:hover {
+    background: #3a3a3c;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Lien de bas de carte ────────────────────────────────── */
+.auth-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--color-muted);
+}
+
+.auth-footer a {
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+/* ── Alertes ─────────────────────────────────────────────── */
+.alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.alert-danger {
+    background: #fff2f1;
+    color: #c0392b;
+    border: 1px solid #ffd5d2;
+}

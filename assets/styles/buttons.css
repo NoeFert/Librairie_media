@@ -1,0 +1,98 @@
+/* ── Bouton de base ──────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.07);
+    color: var(--color-text);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* ── Variantes ───────────────────────────────────────────── */
+.btn-primary {
+    background: var(--color-dark);
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.20);
+}
+
+.btn-primary:hover {
+    background: #3a3a3c;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    color: #fff;
+}
+
+.btn-secondary {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.11);
+}
+
+.btn-danger {
+    background: #ff3b30;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #d9281e;
+    color: #fff;
+}
+
+.btn-show {
+    background: var(--color-dark);
+    color: #fff;
+    padding: 6px 13px;
+}
+
+.btn-show:hover {
+    background: #3a3a3c;
+}
+
+.btn-edit {
+    background: rgba(0, 0, 0, 0.07);
+    color: var(--color-text);
+    padding: 6px 9px;
+}
+
+.btn-edit:hover {
+    background: rgba(0, 0, 0, 0.13);
+}
+
+/* ── Taille compacte ─────────────────────────────────────── */
+.btn-sm {
+    padding: 5px 13px;
+    font-size: 0.78rem;
+    border-radius: 16px;
+}
+
+/* ── Réinitialiser (filtre) ──────────────────────────────── */
+.btn-reset {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn-reset:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--color-text);
+}

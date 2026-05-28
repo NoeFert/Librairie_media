@@ -1,0 +1,39 @@
+/* ── Tablette ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .publications-wrapper,
+    .detail-wrapper,
+    .form-wrapper {
+        padding: 20px 16px;
+    }
+
+    .detail-card {
+        flex-direction: column;
+    }
+
+    .detail-card__cover {
+        width: 100%;
+        height: 240px;
+    }
+
+    .publications-title,
+    .detail-card__title {
+        font-size: 1.3rem;
+    }
+
+    header {
+        padding: 0 16px;
+    }
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .publications-grid {
+        justify-content: center;
+    }
+
+    .pub-card {
+        width: 100%;
+        max-width: 320px;
+        height: 400px;
+    }
+}

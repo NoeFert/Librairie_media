@@ -1,0 +1,200 @@
+/* ── Wrapper de page de détail ───────────────────────────── */
+.detail-wrapper {
+    padding: 32px 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ── Lien retour ─────────────────────────────────────────── */
+.detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding: 6px 0;
+    transition: color 0.15s ease;
+}
+
+.detail-back:hover {
+    color: var(--color-text);
+}
+
+.detail-back::before {
+    content: '←';
+}
+
+/* ── Carte de détail ─────────────────────────────────────── */
+.detail-card {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--color-border);
+    display: flex;
+}
+
+.detail-card__cover {
+    width: 260px;
+    flex-shrink: 0;
+    background: #e0e0e0;
+    position: relative;
+}
+
+.detail-card__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detail-card__numero {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-text);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.detail-card__cover-placeholder {
+    width: 100%;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+}
+
+.detail-card__body {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.detail-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.detail-card__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.detail-card__badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--color-bg);
+    color: var(--color-muted);
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.detail-card__description {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    flex: 1;
+}
+
+.detail-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--color-bg);
+    border-radius: var(--radius-inner);
+}
+
+.detail-card__meta-row {
+    display: flex;
+    gap: 12px;
+    font-size: 0.83rem;
+}
+
+.detail-card__meta-label {
+    color: var(--color-muted);
+    font-weight: 500;
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.detail-card__meta-value {
+    color: var(--color-text);
+}
+
+.detail-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+}
+
+.detail-card__actions form {
+    display: inline-flex;
+}
+
+/* ── Titre de section ────────────────────────────────────── */
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+/* ── Table générique ─────────────────────────────────────── */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--color-border);
+}
+
+.table th,
+.table td {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.88rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table th {
+    color: var(--color-muted);
+    font-weight: 600;
+    width: 140px;
+}
+
+.table td {
+    color: var(--color-text);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
