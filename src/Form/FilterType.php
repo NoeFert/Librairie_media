@@ -16,6 +16,8 @@ class FilterType extends AbstractType
             ->add('searchedGenre', EntityType::class, [
                 'class' => Genre::class,
                 'choice_label' => 'name',
+                'placeholder' => 'Tous',
+                'required' => false,
             ])
         ;
     }

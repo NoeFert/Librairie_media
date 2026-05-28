@@ -19,14 +19,18 @@ final class FranchiseController extends AbstractController
     #[Route(name: 'app_franchise_index', methods: ['GET', 'POST'])]
     public function index(Request $request, FranchiseRepository $franchiseRepository): Response
     {
+        // Valeur par défaut, toujours définie
+        $franchises = $franchiseRepository->findAll();
+
         $form = $this->createForm(FilterType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $genre = $form->get('searchedGenre')->getData(); // searchedGenre est le champ du formulaire
-            $franchises = $franchiseRepository->findByGenre($genre);
-        } else {
-            $franchises = $franchiseRepository->findAll();
+            $genre = $form->get('searchedGenre')->getData();
+
+            $franchises = $genre
+                ? $franchiseRepository->findByGenre($genre)
+                : $franchiseRepository->findAll();
         }
 
         return $this->render('franchise/index.html.twig', [
