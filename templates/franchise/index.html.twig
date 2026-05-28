@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Franchise index{% endblock %}
+{% block title %}Franchises{% endblock %}
 
 {% block body %}
     <div class="publications-wrapper">
-        {{ include('franchise/_form.html.twig', {'button_label': 'Filter', 'form':filterForm})}}
-        <a href="{{ path('app_franchise_index') }}">Réinitialiser</a>
+
+        <div class="filter-bar">
+            {{ form_start(filterForm) }}
+                {{ form_widget(filterForm.searchedGenre) }}
+                {{ form_widget(filterForm.searchedName) }}
+                {{ form_rest(filterForm) }}
+                <button type="submit" class="btn btn-primary">Filtrer</button>
+            {{ form_end(filterForm) }}
+            <a href="{{ path('app_franchise_index') }}" class="btn-reset">Réinitialiser</a>
+        </div>
 
         <div class="publications-header">
             <h1 class="publications-title">Franchises</h1>
@@ -15,25 +23,28 @@
         <div class="publications-grid">
             {% for franchise in franchises %}
                 <a href="{{ path('app_franchise_show', {'id': franchise.id}) }}">
-                <article class="pub-card">
-
-                    <div class="pub-card__cover">
-                        {% if franchise.coverUrl %}
-                            <img src="{{ franchise.coverUrl }}" alt="{{ franchise.name }}">
-                        {% endif %}
-                        <div class="pub-card__numero">{{ franchise.genre.name }}</div>
-                    </div>
-
-                    <div class="pub-card__footer">
-                        <div class="pub-card__info">
-                            <span class="pub-card__title">{{ franchise.name }}</span>
-                            <span class="pub-card__resume">{{ franchise.description }}</span>
+                    <article class="pub-card">
+                        <div class="pub-card__cover">
+                            {% if franchise.coverUrl %}
+                                <img src="{{ franchise.coverUrl }}" alt="{{ franchise.name }}">
+                            {% endif %}
+                            <div class="pub-card__numero">{{ franchise.genre.name }}</div>
                         </div>
-                    </div>
-
-                </article>
+                        <div class="pub-card__footer">
+                            <div class="pub-card__info">
+                                <span class="pub-card__title">{{ franchise.name }}</span>
+                                <span class="pub-card__resume">{{ franchise.description }}</span>
+                            </div>
+                        </div>
+                    </article>
                 </a>
+            {% else %}
+                <div class="publications-empty">
+                    <p>Aucune franchise trouvée.</p>
+                    <a href="{{ path('app_franchise_new') }}" class="btn btn-primary">Créer la première</a>
+                </div>
             {% endfor %}
         </div>
+
     </div>
 {% endblock %}
