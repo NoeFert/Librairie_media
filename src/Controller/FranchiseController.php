@@ -16,22 +16,22 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/franchise')]
 final class FranchiseController extends AbstractController
 {
-    #[Route(name: 'app_franchise_index', methods: ['GET', 'POST'])]
+    #[Route(name: 'app_franchise_index', methods: ['GET'])]
     public function index(Request $request, FranchiseRepository $franchiseRepository): Response
     {
-        // Valeur par défaut, toujours définie
-        $franchises = $franchiseRepository->findAll();
-
-        $form = $this->createForm(FilterType::class);
+        $genre = null;
+        $form = $this->createForm(FilterType::class, null, [
+            'method' => 'GET',
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $genre = $form->get('searchedGenre')->getData();
+        }
 
-            $franchises = $genre
+        $franchises = $genre
                 ? $franchiseRepository->findByGenre($genre)
                 : $franchiseRepository->findAll();
-        }
 
         return $this->render('franchise/index.html.twig', [
             'franchises' => $franchises,
