@@ -34,6 +34,7 @@
 
     <h2>Publications de la franchise</h2>
     {% for publication in publications %}
+    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">
         <article class="pub-card">
 
             <div class="pub-card__cover">
@@ -48,17 +49,10 @@
                     <span class="pub-card__title">{{ publication.title }}</span>
                     <span class="pub-card__resume">{{ publication.resume }}</span>
                 </div>
-                <div class="pub-card__actions">
-                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}" class="btn btn-show">
-                        Voir
-                    </a>
-                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}" class="btn btn-edit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>
-                    </a>
-                </div>
             </div>
 
         </article>
+        </a>
         {% else %}
         <div class="publications-empty">
             <p>Aucune publication trouvée.</p>

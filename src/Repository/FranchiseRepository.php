@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Franchise;
+use App\Entity\Genre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +15,23 @@ class FranchiseRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Franchise::class);
+    }
+
+    public function findByFilters(?Genre $genre, ?string $name): array
+    {
+        $qb = $this->createQueryBuilder('f');
+
+        if ($genre) {
+            $qb->andWhere('f.genre = :genre')
+            ->setParameter('genre', $genre);
+        }
+
+        if ($name) {
+            $qb->andWhere('f.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%');
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

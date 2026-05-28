@@ -25,13 +25,15 @@ final class FranchiseController extends AbstractController
         ]);
         $form->handleRequest($request);
 
+        $genre = null;
+        $name = null;
+
         if ($form->isSubmitted() && $form->isValid()) {
             $genre = $form->get('searchedGenre')->getData();
+            $name  = $form->get('searchedName')->getData();
         }
 
-        $franchises = $genre
-                ? $franchiseRepository->findByGenre($genre)
-                : $franchiseRepository->findAll();
+        $franchises = $franchiseRepository->findByFilters($genre, $name);
 
         return $this->render('franchise/index.html.twig', [
             'franchises' => $franchises,
@@ -96,5 +98,22 @@ final class FranchiseController extends AbstractController
         }
 
         return $this->redirectToRoute('app_franchise_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function findByFilters(?Genre $genre, ?string $name): array
+    {
+        $query = $this->createQueryBuilder('f');
+
+        if ($genre) {
+            $query->andWhere('f.genre = :genre')
+            ->setParameter('genre', $genre);
+        }
+
+        if ($name) {
+            $query->andWhere('f.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%');
+        }
+
+        return $query->getQuery()->getResult();
     }
 }

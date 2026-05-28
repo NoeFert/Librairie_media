@@ -5,6 +5,7 @@
 {% block body %}
     <div class="publications-wrapper">
         {{ include('franchise/_form.html.twig', {'button_label': 'Filter', 'form':filterForm})}}
+        <a href="{{ path('app_franchise_index') }}">Réinitialiser</a>
 
         <div class="publications-header">
             <h1 class="publications-title">Franchises</h1>
